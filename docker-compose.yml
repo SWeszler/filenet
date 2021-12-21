@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    image: node:17-alpine3.12
+    tty: true
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    volumes:
+      - ./:/filenet/
+    working_dir: /filenet/
+    command: node --openssl-legacy-provider ./node_modules/.bin/nuxt
+    env_file:
+      - .env
