@@ -2,6 +2,7 @@
   <section class="section">
     <div class="columns is-mobile">
 
+      <p>Login</p>
     </div>
   </section>
 </template>
@@ -10,7 +11,7 @@
 import Card from '~/components/Card'
 
 export default {
-  name: 'IndexPage',
+  name: 'LoginPage',
   components: {
     Card
   }

@@ -11,6 +11,6 @@ services:
     volumes:
       - ./:/filenet/
     working_dir: /filenet/
-    command: node --openssl-legacy-provider ./node_modules/.bin/nuxt
+    # command: node --openssl-legacy-provider ./node_modules/.bin/nuxt
     env_file:
       - .env

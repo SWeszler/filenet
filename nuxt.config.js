@@ -37,6 +37,23 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyBvoEKgLs8n36KCDmIuv4NqM1gfUMhsyJg',
+          authDomain: 'filenet-17199.firebaseapp.com',
+          projectId: 'filenet-17199',
+          storageBucket: 'filenet-17199.appspot.com',
+          messagingSenderId: '558652622063',
+          appId: '1:558652622063:web:871a8a6a19f23ef61b471a',
+          measurementId: 'G-FEDVELVC45'
+        },
+        services: {
+          auth: true
+        }
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
