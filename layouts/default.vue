@@ -6,15 +6,8 @@
       aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <a
-          class="navbar-item"
-          href="/"
-        >
-          <img
-            src="~assets/buefy.png"
-            alt="Buefy"
-            height="28"
-          >
+        <a class="navbar-item" href="/">
+          <img src="~assets/buefy.png" alt="Buefy" height="28" />
         </a>
 
         <div class="navbar-burger">
@@ -27,18 +20,10 @@
 
     <section class="main-content columns">
       <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">
-          General
-        </p>
+        <p class="menu-label is-hidden-touch">General</p>
         <ul class="menu-list">
-          <li
-            v-for="(item, key) of items"
-            :key="key"
-          >
-            <NuxtLink
-              :to="item.to"
-              exact-active-class="is-active"
-            >
+          <li v-for="(item, key) of items" :key="key">
+            <NuxtLink :to="item.to" exact-active-class="is-active">
               <b-icon :icon="item.icon" /> {{ item.title }}
             </NuxtLink>
           </li>
@@ -54,22 +39,27 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data () {
+  name: "DefaultLayout",
+  data() {
     return {
       items: [
         {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
+          title: "Home",
+          icon: "home",
+          to: { name: "index" },
         },
         {
-          title: 'Login',
-          icon: 'padlock',
-          to: { name: 'login' }
-        }
-      ]
-    }
-  }
-}
+          title: "Login",
+          icon: "lock",
+          to: { name: "login" },
+        },
+        {
+          title: "Files",
+          icon: "file",
+          to: { name: "files" },
+        },
+      ],
+    };
+  },
+};
 </script>
