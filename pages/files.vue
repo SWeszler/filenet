@@ -8,7 +8,7 @@
 export default {
   async asyncData({ params, redirect }) {
     const files = await fetch(
-      'http://0.0.0.0:3000/api/files'
+      'http://localhost:3000/api/files'
     ).then((res) => res.json())
 
     return { files }

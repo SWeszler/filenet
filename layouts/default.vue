@@ -49,9 +49,9 @@ export default {
           to: { name: "index" },
         },
         {
-          title: "Login",
-          icon: "lock",
-          to: { name: "login" },
+          title: "Profile",
+          icon: "user",
+          to: { name: "profile" },
         },
         {
           title: "Files",
