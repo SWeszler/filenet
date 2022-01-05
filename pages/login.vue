@@ -7,7 +7,8 @@
         </b-field>
 
         <b-field label="Password">
-          <b-input type="password" v-model="password" password-reveal> </b-input>
+          <b-input type="password" v-model="password" password-reveal>
+          </b-input>
         </b-field>
 
         <b-field grouped>
@@ -18,6 +19,10 @@
           <p class="control">
             <b-button @click="signup">Sign Up</b-button>
           </p>
+
+          <p class="control">
+            <b-button @click="signinGoogle">Sign in with Google</b-button>
+          </p>
         </b-field>
       </div>
     </div>
@@ -26,7 +31,13 @@
 
 <script>
 import Card from "~/components/Card";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 const auth = getAuth();
 
@@ -47,8 +58,8 @@ export default {
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          this.$store.commit('login', user);
-          this.$router.push('/profile');
+          this.$store.commit("login", user);
+          this.$router.push("/profile");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -63,6 +74,32 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+        });
+    },
+    signinGoogle() {
+      const provider = new GoogleAuthProvider();
+      provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          this.$store.commit("login", user);
+          this.$router.push("/profile");
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
         });
     },
   },

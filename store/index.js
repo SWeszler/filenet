@@ -15,5 +15,10 @@ export const mutations = {
       "email": user.email,
       "uid": user.uid
     }
+  },
+
+  signout(state) {
+    console.log("SIGNOUT")
+    state.user = null;
   }
 }
